@@ -12,6 +12,11 @@ public class Playermovement : MonoBehaviour {
     private float yAxis;
     public float maxVelocity = 3f;
 
+    public float vx;
+    public float vy;
+    public float fvx;
+    public float fvy;
+
     public bool IsMoving
     {
         get
@@ -30,8 +35,10 @@ public class Playermovement : MonoBehaviour {
 	void Update () {
         Shipmove(yAxis);
         faceMouse();
+        vx = rb.velocity.x;
+        vy = rb.velocity.y;
 
-        //yAxis = Input.GetAxis("Vertical");
+        yAxis = Input.GetAxis("Vertical");
 
     }
 
@@ -58,11 +65,51 @@ public class Playermovement : MonoBehaviour {
 
     void Shipmove(float amount)
     {
-        if (Input.GetInput(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
             {
             Vector2 force = transform.up * amount;
 
             rb.AddForce(force);
             }
+        if (Input.GetKey(KeyCode.S))
+        {
+            if(vx < 0)
+            {
+                fvx = vx + Time.deltaTime;
+                if(vx > 0.012)
+                {
+                    vx = 0;
+                    fvx = 0;
+                }
+            }
+            if (vx > 0)
+            {
+                fvx = vx - Time.deltaTime;
+                if (vx < 0.012)
+                {
+                    vx = 0;
+                    fvx = 0;
+                }
+            }
+            if (vy < 0)
+            {
+                fvy = vy + Time.deltaTime;
+                if (vy > 0.012)
+                {
+                    vy = 0;
+                    fvy = 0;
+                }
+            }
+            if (vy > 0)
+            {
+                fvy = vy - Time.deltaTime;
+                if (vy < 0.012)
+                {
+                    vy = 0;
+                    fvy = 0;
+                }
+            }
+            rb.velocity = new Vector2(fvx, fvy);
+        }
     }
 }
