@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class Playermovement : MonoBehaviour {
 
+#region Vars
     [SerializeField]
     private float speed;
+
+    public Transform pl;
 
     protected Vector2 direction;
     private Rigidbody2D rb;
     private float yAxis;
     public float maxVelocity = 3f;
+
+    public string ActiveGun;
+
+    public GameObject guns;
 
     public float vx;
     public float vy;
@@ -24,24 +31,37 @@ public class Playermovement : MonoBehaviour {
             return direction.x != 0 || direction.y != 0;
         }
     }
+    #region BulletGameObjects
 
+    public GameObject gun00Bullet;
+
+    #endregion
+
+
+    #endregion
+
+    #region Start&Update
     // Use this for initialization
     void Start () {
         //Makes a reference to the rigidbody2D
         rb = GetComponent<Rigidbody2D>();
+        pl = GetComponent<Transform>();
     }
 	
 	// Update is called once per frame
 	void Update () {
         Shipmove(yAxis);
         faceMouse();
+        ShootingInput();
         vx = rb.velocity.x;
         vy = rb.velocity.y;
 
         yAxis = Input.GetAxis("Vertical");
 
     }
+    #endregion
 
+#region Voids
     void faceMouse()
     {
         Vector3 mousePosition = Input.mousePosition;
@@ -112,4 +132,27 @@ public class Playermovement : MonoBehaviour {
             rb.velocity = new Vector2(fvx, fvy);
         }
     }
+
+    void ShootingInput()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if(ActiveGun == "Gun00")
+            {
+                gun00();
+            }
+        }
+        if (Input.GetKey(KeyCode.F))
+        {
+            guns.transform.GetChild(0).gameObject.SetActive(true);
+            ActiveGun = "Gun00";
+        }
+    }
+
+    void gun00()
+    {
+        Instantiate(gun00Bullet, guns.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.transform.position, pl.transform.rotation);
+        Instantiate(gun00Bullet, guns.transform.GetChild(0).GetChild(1).GetChild(0).gameObject.transform.position, pl.transform.rotation);
+    }
+    #endregion
 }
