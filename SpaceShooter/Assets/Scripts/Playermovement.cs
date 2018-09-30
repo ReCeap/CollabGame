@@ -36,13 +36,21 @@ public class Playermovement : MonoBehaviour {
     #region BulletGameObjects
 
     public GameObject gun00Bullet;
+    public GameObject gun01Bullet;
+    public GameObject gun02Bullet;
+    public GameObject gun03Bullet;
+    public GameObject gun04Bullet;
+    public GameObject gun05Bullet;
+    public GameObject gun06Bullet;
+    public GameObject gun07Bullet;
+    public GameObject gun08Bullet;
 
     #endregion
 
 
     #endregion
 
-    #region Start&Update
+#region Start&Update
     // Use this for initialization
     void Start () {
         //Makes a reference to the rigidbody2D
@@ -57,7 +65,7 @@ public class Playermovement : MonoBehaviour {
         ShootingInput();
         cooldowntimer();
         rbvelo();
-
+        ChangeGunStats();
     }
     #endregion
 
@@ -149,17 +157,14 @@ public class Playermovement : MonoBehaviour {
             shootingcooldown = 0;
         }
     }
-
+    #region Guns&Shooting
     void ShootingInput()
     {
         if (Input.GetKey(KeyCode.Mouse0))
         {
-            if(ActiveGun == "Gun00")
-            {
-                gun00();
-            }
+            shoot();
         }
-        if (Input.GetKey(KeyCode.F)) // Activate Gun00
+        if (Input.GetKey(KeyCode.E)) // Activate Gun00 Debugging only
         {
             guns.transform.GetChild(0).gameObject.SetActive(true);
             guns.transform.GetChild(1).gameObject.SetActive(false);
@@ -171,18 +176,183 @@ public class Playermovement : MonoBehaviour {
             guns.transform.GetChild(7).gameObject.SetActive(false);
             guns.transform.GetChild(8).gameObject.SetActive(false);
             ActiveGun = "Gun00";
+        }
+        if (Input.GetKey(KeyCode.R)) // Activate Gun01 Debugging only
+        {
+            guns.transform.GetChild(0).gameObject.SetActive(false);
+            guns.transform.GetChild(1).gameObject.SetActive(true);
+            guns.transform.GetChild(2).gameObject.SetActive(false);
+            guns.transform.GetChild(3).gameObject.SetActive(false);
+            guns.transform.GetChild(4).gameObject.SetActive(false);
+            guns.transform.GetChild(5).gameObject.SetActive(false);
+            guns.transform.GetChild(6).gameObject.SetActive(false);
+            guns.transform.GetChild(7).gameObject.SetActive(false);
+            guns.transform.GetChild(8).gameObject.SetActive(false);
+            ActiveGun = "Gun01";
+        }
+        if (Input.GetKey(KeyCode.T)) // Activate Gun02 Debugging only
+        {
+            guns.transform.GetChild(0).gameObject.SetActive(false);
+            guns.transform.GetChild(1).gameObject.SetActive(false);
+            guns.transform.GetChild(2).gameObject.SetActive(true);
+            guns.transform.GetChild(3).gameObject.SetActive(false);
+            guns.transform.GetChild(4).gameObject.SetActive(false);
+            guns.transform.GetChild(5).gameObject.SetActive(false);
+            guns.transform.GetChild(6).gameObject.SetActive(false);
+            guns.transform.GetChild(7).gameObject.SetActive(false);
+            guns.transform.GetChild(8).gameObject.SetActive(false);
+            ActiveGun = "Gun02";
+        }
+        if (Input.GetKey(KeyCode.Z)) // Activate Gun03 Debugging only
+        {
+            guns.transform.GetChild(0).gameObject.SetActive(false);
+            guns.transform.GetChild(1).gameObject.SetActive(false);
+            guns.transform.GetChild(2).gameObject.SetActive(false);
+            guns.transform.GetChild(3).gameObject.SetActive(true);
+            guns.transform.GetChild(4).gameObject.SetActive(false);
+            guns.transform.GetChild(5).gameObject.SetActive(false);
+            guns.transform.GetChild(6).gameObject.SetActive(false);
+            guns.transform.GetChild(7).gameObject.SetActive(false);
+            guns.transform.GetChild(8).gameObject.SetActive(false);
+            ActiveGun = "Gun03";
+        }
+        if (Input.GetKey(KeyCode.U)) // Activate Gun04 Debugging only
+        {
+            guns.transform.GetChild(0).gameObject.SetActive(false);
+            guns.transform.GetChild(1).gameObject.SetActive(false);
+            guns.transform.GetChild(2).gameObject.SetActive(false);
+            guns.transform.GetChild(3).gameObject.SetActive(false);
+            guns.transform.GetChild(4).gameObject.SetActive(true);
+            guns.transform.GetChild(5).gameObject.SetActive(false);
+            guns.transform.GetChild(6).gameObject.SetActive(false);
+            guns.transform.GetChild(7).gameObject.SetActive(false);
+            guns.transform.GetChild(8).gameObject.SetActive(false);
+            ActiveGun = "Gun04";
+        }
+        if (Input.GetKey(KeyCode.I)) // Activate Gun05 Debugging only
+        {
+            guns.transform.GetChild(0).gameObject.SetActive(false);
+            guns.transform.GetChild(1).gameObject.SetActive(false);
+            guns.transform.GetChild(2).gameObject.SetActive(false);
+            guns.transform.GetChild(3).gameObject.SetActive(false);
+            guns.transform.GetChild(4).gameObject.SetActive(false);
+            guns.transform.GetChild(5).gameObject.SetActive(true);
+            guns.transform.GetChild(6).gameObject.SetActive(false);
+            guns.transform.GetChild(7).gameObject.SetActive(false);
+            guns.transform.GetChild(8).gameObject.SetActive(false);
+            ActiveGun = "Gun05";
+        }
+        if (Input.GetKey(KeyCode.O)) // Activate Gun06 Debugging only
+        {
+            guns.transform.GetChild(0).gameObject.SetActive(false);
+            guns.transform.GetChild(1).gameObject.SetActive(false);
+            guns.transform.GetChild(2).gameObject.SetActive(false);
+            guns.transform.GetChild(3).gameObject.SetActive(false);
+            guns.transform.GetChild(4).gameObject.SetActive(false);
+            guns.transform.GetChild(5).gameObject.SetActive(false);
+            guns.transform.GetChild(6).gameObject.SetActive(true);
+            guns.transform.GetChild(7).gameObject.SetActive(false);
+            guns.transform.GetChild(8).gameObject.SetActive(false);
+            ActiveGun = "Gun06";
+        }
+        if (Input.GetKey(KeyCode.P)) // Activate Gun07 Debugging only
+        {
+            guns.transform.GetChild(0).gameObject.SetActive(false);
+            guns.transform.GetChild(1).gameObject.SetActive(false);
+            guns.transform.GetChild(2).gameObject.SetActive(false);
+            guns.transform.GetChild(3).gameObject.SetActive(false);
+            guns.transform.GetChild(4).gameObject.SetActive(false);
+            guns.transform.GetChild(5).gameObject.SetActive(false);
+            guns.transform.GetChild(6).gameObject.SetActive(false);
+            guns.transform.GetChild(7).gameObject.SetActive(true);
+            guns.transform.GetChild(8).gameObject.SetActive(false);
+            ActiveGun = "Gun07";
+        }
+        if (Input.GetKey(KeyCode.F)) // Activate Gun08 Debugging only
+        {
+            guns.transform.GetChild(0).gameObject.SetActive(false);
+            guns.transform.GetChild(1).gameObject.SetActive(false);
+            guns.transform.GetChild(2).gameObject.SetActive(false);
+            guns.transform.GetChild(3).gameObject.SetActive(false);
+            guns.transform.GetChild(4).gameObject.SetActive(false);
+            guns.transform.GetChild(5).gameObject.SetActive(false);
+            guns.transform.GetChild(6).gameObject.SetActive(false);
+            guns.transform.GetChild(7).gameObject.SetActive(false);
+            guns.transform.GetChild(8).gameObject.SetActive(true);
+            ActiveGun = "Gun08";
+        }
+
+    }
+
+    void ChangeGunStats()
+    {
+        if (ActiveGun == "Gun00")
+        {
             guncooldown = 0.3f;
+        }
+        if (ActiveGun == "Gun01")
+        {
+            guncooldown = 0.5f;
         }
     }
 
-    void gun00()
+    void shoot()
     {
-        if (shootingcooldown == 0)
+        if (shootingcooldown == 0 && ActiveGun == "Gun00")
         {
             Instantiate(gun00Bullet, guns.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.transform.position, pl.transform.rotation);
             Instantiate(gun00Bullet, guns.transform.GetChild(0).GetChild(1).GetChild(0).gameObject.transform.position, pl.transform.rotation);
             shootingcooldown = guncooldown;
         }
+        if (shootingcooldown == 0 && ActiveGun == "Gun01")
+        {
+            Instantiate(gun01Bullet, guns.transform.GetChild(1).GetChild(0).GetChild(0).gameObject.transform.position, pl.transform.rotation);
+            Instantiate(gun01Bullet, guns.transform.GetChild(1).GetChild(1).GetChild(0).gameObject.transform.position, pl.transform.rotation);
+            shootingcooldown = guncooldown;
+        }
+        if (shootingcooldown == 0 && ActiveGun == "Gun02")
+        {
+            Instantiate(gun02Bullet, guns.transform.GetChild(2).GetChild(0).GetChild(0).gameObject.transform.position, pl.transform.rotation);
+            Instantiate(gun02Bullet, guns.transform.GetChild(2).GetChild(1).GetChild(0).gameObject.transform.position, pl.transform.rotation);
+            shootingcooldown = guncooldown;
+        }
+        if (shootingcooldown == 0 && ActiveGun == "Gun03")
+        {
+            Instantiate(gun03Bullet, guns.transform.GetChild(3).GetChild(0).GetChild(0).gameObject.transform.position, pl.transform.rotation);
+            Instantiate(gun03Bullet, guns.transform.GetChild(3).GetChild(1).GetChild(0).gameObject.transform.position, pl.transform.rotation);
+            shootingcooldown = guncooldown;
+        }
+        if (shootingcooldown == 0 && ActiveGun == "Gun04")
+        {
+            Instantiate(gun04Bullet, guns.transform.GetChild(4).GetChild(0).GetChild(0).gameObject.transform.position, pl.transform.rotation);
+            Instantiate(gun04Bullet, guns.transform.GetChild(4).GetChild(1).GetChild(0).gameObject.transform.position, pl.transform.rotation);
+            shootingcooldown = guncooldown;
+        }
+        if (shootingcooldown == 0 && ActiveGun == "Gun05")
+        {
+            Instantiate(gun05Bullet, guns.transform.GetChild(5).GetChild(0).GetChild(0).gameObject.transform.position, pl.transform.rotation);
+            Instantiate(gun05Bullet, guns.transform.GetChild(5).GetChild(1).GetChild(0).gameObject.transform.position, pl.transform.rotation);
+            shootingcooldown = guncooldown;
+        }
+        if (shootingcooldown == 0 && ActiveGun == "Gun06")
+        {
+            Instantiate(gun06Bullet, guns.transform.GetChild(6).GetChild(0).GetChild(0).gameObject.transform.position, pl.transform.rotation);
+            Instantiate(gun06Bullet, guns.transform.GetChild(6).GetChild(1).GetChild(0).gameObject.transform.position, pl.transform.rotation);
+            shootingcooldown = guncooldown;
+        }
+        if (shootingcooldown == 0 && ActiveGun == "Gun07")
+        {
+            Instantiate(gun07Bullet, guns.transform.GetChild(7).GetChild(0).GetChild(0).gameObject.transform.position, pl.transform.rotation);
+            Instantiate(gun07Bullet, guns.transform.GetChild(7).GetChild(1).GetChild(0).gameObject.transform.position, pl.transform.rotation);
+            shootingcooldown = guncooldown;
+        }
+        if (shootingcooldown == 0 && ActiveGun == "Gun08")
+        {
+            Instantiate(gun08Bullet, guns.transform.GetChild(8).GetChild(0).GetChild(0).gameObject.transform.position, pl.transform.rotation);
+            Instantiate(gun08Bullet, guns.transform.GetChild(8).GetChild(1).GetChild(0).gameObject.transform.position, pl.transform.rotation);
+            shootingcooldown = guncooldown;
+        }
     }
+    #endregion
     #endregion
 }
