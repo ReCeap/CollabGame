@@ -294,6 +294,34 @@ public class Playermovement : MonoBehaviour {
         {
             guncooldown = 0.5f;
         }
+        if (ActiveGun == "Gun02")
+        {
+            guncooldown = 0.4f;
+        }
+        if (ActiveGun == "Gun03")
+        {
+            guncooldown = 0.125f;
+        }
+        if (ActiveGun == "Gun04")
+        {
+            guncooldown = 0.45f;
+        }
+        if (ActiveGun == "Gun05")
+        {
+            guncooldown = 0.2f;
+        }
+        if (ActiveGun == "Gun06")
+        {
+            guncooldown = 0.3f;
+        }
+        if (ActiveGun == "Gun07")
+        {
+            guncooldown = 0.7f;
+        }
+        if (ActiveGun == "Gun08")
+        {
+            guncooldown = 0.075f;
+        }
     }
 
     void shoot()
