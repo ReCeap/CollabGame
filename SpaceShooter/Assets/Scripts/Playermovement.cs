@@ -135,7 +135,7 @@ public class Playermovement : MonoBehaviour {
 
     void ShootingInput()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             if(ActiveGun == "Gun00")
             {
@@ -145,6 +145,14 @@ public class Playermovement : MonoBehaviour {
         if (Input.GetKey(KeyCode.F))
         {
             guns.transform.GetChild(0).gameObject.SetActive(true);
+            guns.transform.GetChild(1).gameObject.SetActive(false);
+            guns.transform.GetChild(2).gameObject.SetActive(false);
+            guns.transform.GetChild(3).gameObject.SetActive(false);
+            guns.transform.GetChild(4).gameObject.SetActive(false);
+            guns.transform.GetChild(5).gameObject.SetActive(false);
+            guns.transform.GetChild(6).gameObject.SetActive(false);
+            guns.transform.GetChild(7).gameObject.SetActive(false);
+            guns.transform.GetChild(8).gameObject.SetActive(false);
             ActiveGun = "Gun00";
         }
     }
