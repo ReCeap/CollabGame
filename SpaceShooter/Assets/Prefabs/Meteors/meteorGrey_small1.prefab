@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4552046917908180}
   - component: {fileID: 212356304032481444}
+  - component: {fileID: 60637479164437110}
   m_Layer: 0
   m_Name: meteorGrey_small1
   m_TagString: Untagged
@@ -40,6 +41,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &60637479164437110
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1483009432306768}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.28, y: 0.28}
+    newSize: {x: 0.28, y: 0.28}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.11, y: 0.14}
+      - {x: -0.14, y: 0.099999994}
+      - {x: -0.14, y: -0.11}
+      - {x: -0.13, y: -0.14}
+      - {x: 0.06, y: -0.14}
+      - {x: 0.14, y: -0.11}
+      - {x: 0.14, y: 0.14}
 --- !u!212 &212356304032481444
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -74,7 +106,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_Sprite: {fileID: 21300000, guid: 21f9f5dc5cfb1ef4ead456b4c2ab9207, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -16,6 +16,8 @@ public class Playermovement : MonoBehaviour {
     public float maxVelocity = 3f;
 
     public string ActiveGun;
+    public float shootingcooldown;
+    public float guncooldown;
 
     public GameObject guns;
 
@@ -53,10 +55,8 @@ public class Playermovement : MonoBehaviour {
         Shipmove(yAxis);
         faceMouse();
         ShootingInput();
-        vx = rb.velocity.x;
-        vy = rb.velocity.y;
-
-        yAxis = Input.GetAxis("Vertical");
+        cooldowntimer();
+        rbvelo();
 
     }
     #endregion
@@ -73,6 +73,14 @@ public class Playermovement : MonoBehaviour {
             );
 
         transform.up = direction;
+    }
+
+    void rbvelo()
+    {
+        vx = rb.velocity.x;
+        vy = rb.velocity.y;
+
+        yAxis = Input.GetAxis("Vertical");
     }
 
     void ClampVelocity()
@@ -133,16 +141,25 @@ public class Playermovement : MonoBehaviour {
         }
     }
 
+    void cooldowntimer()
+    {
+        shootingcooldown -= Time.deltaTime;
+        if(shootingcooldown < 0)
+        {
+            shootingcooldown = 0;
+        }
+    }
+
     void ShootingInput()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0))
         {
             if(ActiveGun == "Gun00")
             {
                 gun00();
             }
         }
-        if (Input.GetKey(KeyCode.F))
+        if (Input.GetKey(KeyCode.F)) // Activate Gun00
         {
             guns.transform.GetChild(0).gameObject.SetActive(true);
             guns.transform.GetChild(1).gameObject.SetActive(false);
@@ -154,13 +171,18 @@ public class Playermovement : MonoBehaviour {
             guns.transform.GetChild(7).gameObject.SetActive(false);
             guns.transform.GetChild(8).gameObject.SetActive(false);
             ActiveGun = "Gun00";
+            guncooldown = 0.3f;
         }
     }
 
     void gun00()
     {
-        Instantiate(gun00Bullet, guns.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.transform.position, pl.transform.rotation);
-        Instantiate(gun00Bullet, guns.transform.GetChild(0).GetChild(1).GetChild(0).gameObject.transform.position, pl.transform.rotation);
+        if (shootingcooldown == 0)
+        {
+            Instantiate(gun00Bullet, guns.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.transform.position, pl.transform.rotation);
+            Instantiate(gun00Bullet, guns.transform.GetChild(0).GetChild(1).GetChild(0).gameObject.transform.position, pl.transform.rotation);
+            shootingcooldown = guncooldown;
+        }
     }
     #endregion
 }

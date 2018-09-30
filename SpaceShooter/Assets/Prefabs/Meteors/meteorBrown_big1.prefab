@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4918825750433090}
   - component: {fileID: 212002978826637412}
+  - component: {fileID: 60898669008550100}
   m_Layer: 0
   m_Name: meteorBrown_big1
   m_TagString: Untagged
@@ -34,12 +35,43 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1786614019275516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -3.9967117, y: -1.1469104, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &60898669008550100
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1786614019275516}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.01, y: 0.84}
+    newSize: {x: 1.01, y: 0.84}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.23556447, y: 0.41404313}
+      - {x: -0.32356358, y: 0.41222572}
+      - {x: -0.5099416, y: -0.09204924}
+      - {x: -0.21615982, y: -0.4194466}
+      - {x: 0.105695486, y: -0.2852012}
+      - {x: 0.3455732, y: -0.32531786}
+      - {x: 0.50607467, y: 0.015863061}
 --- !u!212 &212002978826637412
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -74,7 +106,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_Sprite: {fileID: 21300000, guid: f86be134d0b588b498183eb760ba4371, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
