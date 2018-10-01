@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4133888205412266}
   - component: {fileID: 212119643436529762}
   - component: {fileID: 60485304170082486}
+  - component: {fileID: 114553597872208816}
   m_Layer: 0
   m_Name: meteorGrey_tiny2
   m_TagString: Meteor
@@ -69,6 +70,19 @@ PolygonCollider2D:
       - {x: 0.081056595, y: 0.020451844}
       - {x: 0.017726898, y: -0.07611114}
       - {x: -0.07999992, y: -0.00056272745}
+--- !u!114 &114553597872208816
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1867966275744248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b07709c090fce2d4a9cd0a1e1b8cce5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxhealth: 200
+  currenthealth: 0
 --- !u!212 &212119643436529762
 SpriteRenderer:
   m_ObjectHideFlags: 1
