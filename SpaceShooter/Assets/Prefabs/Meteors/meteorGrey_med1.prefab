@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212806398064444476}
   - component: {fileID: 60861509896326292}
   - component: {fileID: 114289979402248376}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: meteorGrey_med1
   m_TagString: Meteor
   m_Icon: {fileID: 0}

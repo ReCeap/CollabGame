@@ -26,6 +26,7 @@ public class MeteorController : MonoBehaviour {
         if (currenthealth < 0)
         {
             currenthealth = 0;
+            Destoryed();
             Destroy(gameObject);
         }
     }
@@ -35,5 +36,9 @@ public class MeteorController : MonoBehaviour {
         {
             currenthealth = maxhealth;
         }
+    }
+    void Destoryed()
+    {
+        Debug.Log("Ein Meteor wurde zerstört!");
     }
 }

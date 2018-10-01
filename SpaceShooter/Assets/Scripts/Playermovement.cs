@@ -13,7 +13,7 @@ public class Playermovement : MonoBehaviour {
     protected Vector2 direction;
     private Rigidbody2D rb;
     private float yAxis;
-    public float maxVelocity = 3f;
+    public float maxVelocity = 5f;
 
     public string ActiveGun;
     public float shootingcooldown;
@@ -25,6 +25,12 @@ public class Playermovement : MonoBehaviour {
     public float vy;
     public float fvx;
     public float fvy;
+
+    float maxplayerhealth = 250f;
+    public float currentplayerhealth;
+    public float absvelocitycount;
+
+    public float meteorcollidedmg = 20;
 
     public bool IsMoving
     {
@@ -56,6 +62,7 @@ public class Playermovement : MonoBehaviour {
         //Makes a reference to the rigidbody2D
         rb = GetComponent<Rigidbody2D>();
         pl = GetComponent<Transform>();
+        currentplayerhealth = maxplayerhealth;
     }
 	
 	// Update is called once per frame
@@ -64,12 +71,60 @@ public class Playermovement : MonoBehaviour {
         faceMouse();
         ShootingInput();
         cooldowntimer();
+        ClampVelocity();
         rbvelo();
         ChangeGunStats();
+        absvelocitycount = Mathf.Abs(rb.velocity.x) + Mathf.Abs(rb.velocity.y);
+        deathhandel();
+        brokestates();
     }
     #endregion
 
 #region Voids
+
+    void brokestates()
+    {
+        if(currentplayerhealth < maxplayerhealth * 0.85)
+        {
+            pl.GetChild(0).GetChild(5).gameObject.SetActive(true);
+            pl.GetChild(0).GetChild(4).gameObject.SetActive(false);
+            pl.GetChild(0).GetChild(3).gameObject.SetActive(false);
+        }
+        if (currentplayerhealth < maxplayerhealth * 0.50)
+        {
+            pl.GetChild(0).GetChild(5).gameObject.SetActive(false);
+            pl.GetChild(0).GetChild(4).gameObject.SetActive(true);
+            pl.GetChild(0).GetChild(3).gameObject.SetActive(false);
+        }
+        if (currentplayerhealth < maxplayerhealth * 0.25)
+        {
+            pl.GetChild(0).GetChild(5).gameObject.SetActive(false);
+            pl.GetChild(0).GetChild(4).gameObject.SetActive(false);
+            pl.GetChild(0).GetChild(3).gameObject.SetActive(true);
+        }
+    }
+
+    void deathhandel()
+    {
+        if(currentplayerhealth < 0)
+        {
+            currentplayerhealth = 0;
+            Destroy(gameObject);
+        }
+        if(currentplayerhealth > maxplayerhealth)
+        {
+            currentplayerhealth = maxplayerhealth;
+        }
+    }
+
+    void OnCollisionEnter2D (Collision2D c)
+    {
+        if (c.gameObject.tag == "Meteor")
+        {
+            currentplayerhealth -= meteorcollidedmg * absvelocitycount;
+        }
+    }
+
     void faceMouse()
     {
         Vector3 mousePosition = Input.mousePosition;
