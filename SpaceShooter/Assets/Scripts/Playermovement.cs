@@ -10,6 +10,7 @@ public class Playermovement : MonoBehaviour {
 
     public Transform pl;
 
+    public deathHandler deathCheck;
     protected Vector2 direction;
     private Rigidbody2D rb;
     private float yAxis;
@@ -63,6 +64,8 @@ public class Playermovement : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         pl = GetComponent<Transform>();
         currentplayerhealth = maxplayerhealth;
+        GameObject g = GameObject.FindGameObjectWithTag("Handler");
+        deathCheck = g.GetComponent<deathHandler>();
     }
 	
 	// Update is called once per frame
@@ -109,6 +112,7 @@ public class Playermovement : MonoBehaviour {
         if(currentplayerhealth < 0)
         {
             currentplayerhealth = 0;
+            deathCheck.death = true;
             Destroy(gameObject);
         }
         if(currentplayerhealth > maxplayerhealth)

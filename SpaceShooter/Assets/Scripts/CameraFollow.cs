@@ -6,8 +6,19 @@ public class CameraFollow : MonoBehaviour {
     public float smoothSpeed = 0.5f;
     public Vector3 offset;
 
+    public deathHandler deathCheck;
+
+    void Start()
+    {
+        GameObject g = GameObject.FindGameObjectWithTag("Handler");
+        deathCheck = g.GetComponent<deathHandler>();
+    }
+
     void LateUpdate ()
     {
-        transform.position = target.position + offset;
+        if (deathCheck.death == false)
+        {
+            transform.position = target.position + offset;
+        }
     }
 }
